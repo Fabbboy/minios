@@ -1,3 +1,5 @@
 kernel=kernel8.img
+dtoverlay=disable-bt
 enable_uart=1
 uart_2ndstage=1
+dtoverlay=miniuart-bt
