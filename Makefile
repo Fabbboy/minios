@@ -16,6 +16,7 @@ FIRMDIR:=$(WORKDIR)/firmware
 
 FIXUP:=$(FIRMDIR)/boot/fixup4.dat
 START:=$(FIRMDIR)/boot/start4.elf
+OVERLAY:=$(FIRMDIR)/boot/overlays/miniuart-bt.dtbo
 CONFIG:=$(WORKDIR)/config.txt
 LINKER_SCRIPT:=$(WORKDIR)/linker.ld
 
@@ -42,6 +43,8 @@ copy: prepare
 	$(CP) $(FIXUP) $(BOOT_DIR)/fixup4.dat
 	$(CP) $(START) $(BOOT_DIR)/start4.elf
 	$(CP) $(CONFIG) $(BOOT_DIR)/config.txt
+	mkdir -p $(BOOT_DIR)/overlays
+	$(CP) $(OVERLAY) $(BOOT_DIR)/overlays/miniuart-bt.dtbo
 
 $(OUT_DIR)/%.o: $(KERNEL_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
